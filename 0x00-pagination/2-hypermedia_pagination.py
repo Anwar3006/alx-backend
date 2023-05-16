@@ -63,13 +63,12 @@ class Server:
         returns a dictionary containing key-value pairs:
         """
         pageSize = 0 if page > math.floor(19419 / page_size) else page_size
-        contentSize = 19419 / page_size
+        # contentSize = 19419 / page_size
         return {
             'page_size': pageSize,
             'page': page,
             'data': [] if pageSize == 0 else self.get_page(page, pageSize),
-            'next_page': None if pageSize == 0 else page + 1,
-            'prev_page': None if page - 1 == 0 else page - 1,
-            'total_pages': math.ceil(contentSize)
-            if pageSize == 0 else math.floor(contentSize)
+            'next_page': None if pageSize <= 0 else page + 1,
+            'prev_page': None if page - 1 <= 0 else page - 1,
+            'total_pages': math.ceil(len(self.__dataset) / page_size)
         }
