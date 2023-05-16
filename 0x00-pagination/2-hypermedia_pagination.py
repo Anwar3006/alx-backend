@@ -45,12 +45,8 @@ class Server:
         """
         get pages based on pagination range
         """
-        assert page >= 1
-
-        if type(page_size) != int:
-            raise AssertionError
-        else:
-            assert page_size >= 1
+        assert type(page) == int and type(page_size) == int
+        assert page > 0 and page_size > 0
 
         page1 = list(index_range(page, page_size))
         dataset = self.dataset()
