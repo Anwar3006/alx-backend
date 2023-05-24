@@ -33,9 +33,6 @@ def get_locale():
         return request.accept_languages.best_match(['LANGUAGES'])
 
 
-# babel.init_app(app, locale_selector=get_locale)
-
-
 @app.route('/', strict_slashes=False)
 def index():
     """

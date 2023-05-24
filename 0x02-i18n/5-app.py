@@ -41,9 +41,6 @@ def get_locale():
         return request.accept_languages.best_match('LANGAUGE')
 
 
-# babel.init_app(app, locale_selector=get_locale)
-
-
 def get_user():
     """
     Retrieves ID from URL passed as a query string
