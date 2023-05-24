@@ -28,9 +28,6 @@ def get_locale():
 
 babel.init_app(app, locale_selector=get_locale)
 
-en_trans = gettext("home_title")
-fr_trans = gettext("home_header")
-
 
 @app.route('/', strict_slashes=False)
 def index():
