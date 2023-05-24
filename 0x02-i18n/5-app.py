@@ -3,7 +3,7 @@
 Mock logging in
 Imitating a user login system
 """
-from flask import Flask, request, render_template, g, session
+from flask import Flask, request, render_template, g
 from flask_babel import Babel
 
 
@@ -34,9 +34,8 @@ def get_locale():
     Retrieve language from user's request header
     """
     locale = request.args.get('locale')
-    if locale == 'fr':
-        app.config['BABEL_DEFAULT_LOCALE'] = locale
-        return app.config.get('BABEL_DEFAULT_LOCALE')
+    if locale in app.config['LANGUAGES']:
+        return locale
     else:
         return request.accept_languages.best_match('LANGAUGE')
 
