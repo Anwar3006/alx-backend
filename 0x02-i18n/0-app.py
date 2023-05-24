@@ -7,7 +7,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def index():
     """
     Render html page from external source

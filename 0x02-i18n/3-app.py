@@ -19,6 +19,7 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
+@babel.localeselector
 def get_locale():
     """
     Retrieves langauge from user's request headers
@@ -26,7 +27,7 @@ def get_locale():
     return request.accept_languages.best_match(['LANGUAGES'])
 
 
-babel.init_app(app, locale_selector=get_locale)
+# babel.init_app(app, locale_selector=get_locale)
 
 
 @app.route('/', strict_slashes=False)
