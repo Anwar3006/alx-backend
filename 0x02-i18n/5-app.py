@@ -47,14 +47,10 @@ def get_user():
     Returns a user dictionary or None if the ID cannot be found
     or if login_as was not passed
     """
-    try:
-        user_ID = int(request.args.get('login_as'))
-        users_list = [x for x in users.keys()]
-        if user_ID and user_ID in users_list:
-            return user_ID
-        return None
-    except TypeError:
-        return None
+    user_ID = request.args.get('login_as')
+    if user_ID:
+        return users.get(int(user_ID))
+    return None
 
 
 @app.before_request
@@ -63,10 +59,8 @@ def before_request():
     Should use get_user to find a user if any,
     and set it as a global on flask.g.user.
     """
-    obtain_user = get_user()
-    if obtain_user:
-        g.user = users[obtain_user]['name']
-        print(g.user)
+    obtain_user = get_user()    
+    g.user = obtain_user
 
 
 @app.route('/', strict_slashes=False)
