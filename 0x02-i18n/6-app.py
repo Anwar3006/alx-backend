@@ -28,6 +28,7 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
+@babel.localeselector
 def get_locale():
     """
     Retrieve language from user's request header
@@ -44,7 +45,7 @@ def get_locale():
     return request.accept_languages.best_match('LANGAUGE')
 
 
-babel.init_app(app, locale_selector=get_locale)
+# babel.init_app(app, locale_selector=get_locale)
 
 
 def get_user():
