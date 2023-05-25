@@ -58,7 +58,7 @@ def before_request():
     Should use get_user to find a user if any,
     and set it as a global on flask.g.user.
     """
-    obtain_user = get_user()    
+    obtain_user = get_user()
     g.user = obtain_user
 
 
